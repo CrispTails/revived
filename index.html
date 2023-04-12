@@ -1,0 +1,119 @@
+<html>
+	<head>
+		<title>About Me</title>
+		<style> 
+			body {
+				background-color: #2e3136;
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: sans-serif;
+			}
+			
+			.container {
+				width: 100%;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			h1 {
+				text-align: center;
+				color: white;
+				font-size: 24px;
+			}
+			
+			.box {
+				width: 100%;
+				background: #36393f;
+				border-radius: 6px;
+				padding: 20px;
+				margin-top: 20px;
+				box-sizing: border-box;
+			}
+			
+			.box p {
+				color: #8e9297;
+				margin: 0;
+				font-size: 16px;
+			}
+			
+			.box img {
+				width: 100%;
+				border-radius: 6px;
+			}
+			
+			.confetti {
+				width: 1px; 
+				height: 1px;
+				background-color: #8e9297;
+				position: absolute;
+				animation: exploder 1s linear infinite;
+				opacity: 0;
+				border-radius: 50%;
+				z-index: 1000;
+			}
+
+			@keyframes exploder {
+				0% {
+					top: 0;
+					left: 0;
+					opacity: 0;
+					transform: translate(-50%, -50%) rotate(0);
+				}
+				20% {
+					top: 50%;
+					left: 50%;
+					opacity: 1;
+					transform: translate(-50%, -50%) rotate(360deg);
+				}
+				100% {
+					top: 100%;
+					left: 100%;
+					opacity: 0;
+					transform: translate(-50%, -50%) rotate(720deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1> About Me </h1>
+			<div class="box">
+				<img src="https://cataas.com/cat/cute" alt="">
+				<p> I'm a web developer who loves to create web-pages with HTML, CSS, and JavaScript. I'm passionate about coding and have been coding for over 5 years. I used to create exploits for acellus but I quit because I got caught and was banned and then found out they're pretty much owned by a cult in which they hate our lord and saviour: Jesus Christ and that snapped the bone there. Not gonna stay at a cult school, smh. My life is pretty okay so far but I definitely ain't doin no more acellus. Just enjoy these cute cats lmao  </p>
+				<div id="confetti" class="confetti"></div>
+			</div>
+		</div>
+		<script>
+			const confettiEgg = document.getElementById("confetti");
+
+			confettiEgg.addEventListener("click", () => {
+				// Generate random number between 0 and 359
+				const random = Math.floor(Math.random() * 359);
+				// Generate random color
+				const color = `hsl(${random}, 100%, 50%)`;
+				// Generate random size between 1 and 3
+				const size = Math.floor(Math.random() * 3 + 1);
+				// Generate random position between 0 and 100
+				const x = Math.floor(Math.random() * 100);
+				const y = Math.floor(Math.random() * 100);
+				// Create confetti
+				const confetti = document.createElement("div");
+				confetti.classList.add("confetti");
+				confetti.style.backgroundColor = color;
+				confetti.style.width = `${size}px`;
+				confetti.style.height = `${size}px`;
+				confetti.style.top = `${y}%`;
+				confetti.style.left = `${x}%`;
+				document.body.appendChild(confetti);
+				// Remove confetti
+				setTimeout(() => {
+					confetti.remove();
+				}, 1000);
+				// Hide egg
+				confettiEgg.style.display = "none";
+			});
+		</script>
+	</body>
+</html>
