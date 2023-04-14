@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>BSOD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0000F4;
+      font-family: Consolas;
+      font-size: 12px;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+    
+    #error-text {
+      text-align: left;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      let count = 0;
+      let errorText = document.getElementById("error-text");
+      let errors = [
+        "A problem has been detected and Windows has been shut down to prevent damage to your computer.",
+        "The problem seems to be caused by the following file: DRIVER.SYS",
+        "PAGE_FAULT_IN_NONPAGED_AREA",
+        "If this is the first time you've seen this Stop error screen, restart your computer. If this screen appears again, follow these steps:",
+        "Check to make sure any new hardware or software is properly installed. If this is a new installation, ask your hardware or software manufacturer for any Windows updates you might need.",
+        "If problems continue, disable or remove any newly installed hardware or software. Disable BIOS memory options such as caching or shadowing. If you need to use safe mode to remove or disable components, restart your computer, press F8 to select Advanced Startup Options, and then select Safe Mode."
+      ];
+      let interval = setInterval(function() {
+        count += 5;
+        if (count > 100) {
+          clearInterval(interval);
+          document.body.style.backgroundColor = "#000000";
+          errorText.innerHTML = "";
+        } else {
+          errorText.innerHTML = errors.join("<br>") + "<br>";
+          errorText.innerHTML += "Dumping physical memory to disk: " + count + "%";
+        }
+      }, 750);
+    }
+  </script>
+</head>
+<body>
+  <div id="error-text"></div>
+</body>
+</html>
